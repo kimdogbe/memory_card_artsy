@@ -59,3 +59,27 @@ nav {
 .scores {
   margin: 0em 1em;
 }
+
+.art-card {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  text-align: left;
+  border-radius: 10px;
+  background-color: rgb(55, 103, 87);
+}
+
+.art-card div {
+  flex: 1;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+}
+
+.cards {
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
