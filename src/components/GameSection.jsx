@@ -12,7 +12,9 @@ const chicagoArtworks = [
 
 export default function GameSection({ difficulty='easy' }) {
   const [selected, setSelected] = useState([]);
-  const [currentSelection, setCurrentSelection] = useState('');
+  const [gameover, setGameover] = useState(false);
+  const [currentScore, setCurrentScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
 
   const [artList, setArtList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -49,19 +51,64 @@ export default function GameSection({ difficulty='easy' }) {
     fetchUsers();
   }, []); // Empty dependency array means this runs once on mount
 
+  function handleSelection(artId) {
+    console.log(artId);
+    if (selected.includes(artId)) {
+      setGameover(true);
+    } else {
+      setSelected([...selected, artId]);
+      setCurrentScore(currentScore + 1);
+    }
+  }
+
+  function handleNewGame() {
+    setSelected([]);
+    setCurrentScore(0);
+    setGameover(false);
+  }
+
   if (loading) return <div>Loading...</div>;
   if (error) return <div>Error: {error}</div>;
+  if (gameover) {
+    if (currentScore > highScore){
+      setHighScore(currentScore);
+    }
+    return <div>
+      <h2>GameOver final score is {currentScore}</h2>
+      <button onClick={handleNewGame}>New Game</button>
+    </div>
+  }
 
   return <div className="game-section">
     <h2>Select a character you haven't picked yet</h2>
     <div className="cards">
-      {artList.map(art => <ArtCard 
+      {shuffle(artList).map(art => <ArtCard 
         key={art.id} 
+        artId={art.id}
         artwork={art.name} 
         artist={art.artist}
         medium={art.type}
         imgSrc={art.image}
+        clickHandler={handleSelection}
         />)}
     </div>
   </div>
+}
+
+function shuffle(array) {
+  let shuffledArray = [...array];
+  let currentIndex = array.length;
+
+  // While there remain elements to shuffle...
+  while (currentIndex != 0) {
+
+    // Pick a remaining element...
+    let randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex--;
+
+    // And swap it with the current element.
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]];
+  }
+  return shuffledArray;
 }
