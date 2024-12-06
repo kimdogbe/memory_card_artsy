@@ -80,7 +80,7 @@ export default function GameSection({ difficulty='easy' }) {
   }
 
   return <div className="game-section">
-    <h2>Select a character you haven't picked yet</h2>
+    <h2>Select a piece you haven't picked yet</h2>
     <div className="cards">
       {shuffle(artList).map(art => <ArtCard 
         key={art.id} 
