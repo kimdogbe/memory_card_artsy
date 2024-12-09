@@ -10,11 +10,9 @@ const chicagoArtworks = [
   '210471', '117266', '237892', '2567', '9503', '249299'
 ];
 
-export default function GameSection({ difficulty='Easy' }) {
+export default function GameSection({ difficulty='Easy', currentScore, highScore, incrementScore, setHighScore, resetScore }) {
   const [selected, setSelected] = useState([]);
   const [gameover, setGameover] = useState(false);
-  const [currentScore, setCurrentScore] = useState(0);
-  const [highScore, setHighScore] = useState(0);
 
   const [artList, setArtList] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -61,13 +59,13 @@ export default function GameSection({ difficulty='Easy' }) {
       setGameover(true);
     } else {
       setSelected([...selected, artId]);
-      setCurrentScore(currentScore + 1);
+      incrementScore();
     }
   }
 
   function handleNewGame() {
     setSelected([]);
-    setCurrentScore(0);
+    resetScore();
     setGameover(false);
   }
 
