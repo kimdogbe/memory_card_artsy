@@ -67,7 +67,6 @@ nav {
   border-radius: 10px;
   justify-self: stretch;
   align-self: stretch;
-  /* background-color: rgb(55, 103, 87); */
 }
 
 .art-card div {
@@ -114,4 +113,8 @@ html {
   background:
     repeating-conic-gradient(var(--c1) 0 45deg,var(--c2) 0 90deg)
     0/var(--s) var(--s);
+}
+
+.card > button {
+  margin: 0em 0.5em;
 }
