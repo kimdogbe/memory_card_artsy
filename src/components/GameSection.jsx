@@ -10,7 +10,7 @@ const chicagoArtworks = [
   '210471', '117266', '237892', '2567', '9503', '249299'
 ];
 
-export default function GameSection({ difficulty='easy' }) {
+export default function GameSection({ difficulty='Easy' }) {
   const [selected, setSelected] = useState([]);
   const [gameover, setGameover] = useState(false);
   const [currentScore, setCurrentScore] = useState(0);
@@ -20,11 +20,15 @@ export default function GameSection({ difficulty='easy' }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
+  const artworks = difficulty === 'Easy' ? chicagoArtworks.slice(0, 8) : 
+                   difficulty === 'Medium' ? chicagoArtworks.slice(0, 12) :
+                   chicagoArtworks;
+
   useEffect(() => {
     const fetchUsers = async () => {
       let tempList = []
       try {
-        for (const artwork of chicagoArtworks) {
+        for (const artwork of artworks) {
           const response = await fetch(endpoint + artwork);
           const data = await response.json();
           const body = data.data;

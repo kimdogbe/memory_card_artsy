@@ -32,6 +32,10 @@ function App() {
         </div>
   
         <button onClick={() => setGameStarted(true)}>Start Game</button>
+
+        <div>
+          Photo by <a href="https://unsplash.com/@aaina?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Aaina Sharma</a> on <a href="https://unsplash.com/photos/man-sitting-near-museum-painting-nqj3ncOPS0g?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+        </div>
         
       </>
     )
