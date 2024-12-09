@@ -1,3 +1,13 @@
+# Arty Farty Memory Game
+Simple memory game intended to practice fundamental react concepts learnt as part of The Odin Project. Including state, props, data fetching with useEffect and many more!
+
+Data fetched from the [Art Institute of Chicago's API](https://api.artic.edu/docs/#introduction)
+
+Final outcome: 
+![Website visual](websiteImage.png)
+
+Using the stack below...
+
 # React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
