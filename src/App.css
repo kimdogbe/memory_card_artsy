@@ -105,3 +105,13 @@ img {
   border-left-color: lighten(#000, 0%);
   box-shadow: 2px 2px 4px rgba(0,0,0,.6);
 }
+
+html {
+  --s: 73px; /* control the size*/
+  --c1: #11053b;
+  --c2: #004d65;
+  
+  background:
+    repeating-conic-gradient(var(--c1) 0 45deg,var(--c2) 0 90deg)
+    0/var(--s) var(--s);
+}
