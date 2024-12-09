@@ -13,6 +13,7 @@
 
 .logo {
   height: 4em;
+  max-width: 10em;
   will-change: filter;
   transition: filter 300ms;
 }
