@@ -54,7 +54,17 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
+html {
+  --s: 73px; /* control the size*/
+  --c1: #11053b;
+  --c2: #004d65;
+  
+  background:
+    repeating-conic-gradient(var(--c1) 0 45deg,var(--c2) 0 90deg)
+    0/var(--s) var(--s);
+}
+
+@media (prefers-color-scheme: dark) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -64,5 +74,15 @@ button:focus-visible {
   }
   button {
     background-color: #f9f9f9;
+    color: #213547;
+  }
+  html {
+    --s: 73px; /* control the size*/
+    --c1: #beeedd;
+    --c2: #71cde9;
+    
+    background:
+      repeating-conic-gradient(var(--c1) 0 45deg,var(--c2) 0 90deg)
+      0/var(--s) var(--s);
   }
 }
