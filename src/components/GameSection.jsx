@@ -39,7 +39,6 @@ export default function GameSection({ difficulty='Easy', currentScore, highScore
                 image: imageEndpoint.replace('{identifier}', body.image_id)
               }
             ];
-          console.log(data.data);
         }
         setArtList(tempList);
         console.log(artList);
@@ -54,7 +53,6 @@ export default function GameSection({ difficulty='Easy', currentScore, highScore
   }, []); // Empty dependency array means this runs once on mount
 
   function handleSelection(artId) {
-    console.log(artId);
     if (selected.includes(artId)) {
       setGameover(true);
     } else {
@@ -76,6 +74,7 @@ export default function GameSection({ difficulty='Easy', currentScore, highScore
       setHighScore(currentScore);
     }
     return <div>
+      {gameWon(difficulty, currentScore) ? <h2>You got them all well done!</h2> : ''}
       <h2>GameOver final score is {currentScore}</h2>
       <button onClick={handleNewGame}>New Game</button>
     </div>
@@ -113,4 +112,10 @@ function shuffle(array) {
       array[randomIndex], array[currentIndex]];
   }
   return shuffledArray;
+}
+
+function gameWon(level, score) {
+  if (level === 'Easy' && score === 8) return true;
+  if (level === 'Medium' && score === 12) return true;
+  if (level === 'Hard' && score === 18) return true;
 }
